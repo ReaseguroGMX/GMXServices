@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="VB" Debug="true" Service="GMXServices.GMXServices" CodeBehind="Service1.svc.vb" %>
