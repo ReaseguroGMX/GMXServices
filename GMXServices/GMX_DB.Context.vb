@@ -31,10 +31,26 @@ Partial Public Class GMXEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spS_Aclaracion_Result)("spS_Aclaracion", id_pvParameter)
     End Function
 
-    Public Overridable Function spS_UsuarioFirma(tipoUsuario As Nullable(Of Integer)) As ObjectResult(Of spS_UsuarioFirma_Result)
+    Public Overridable Function spU_ActualizaFirmas(numOP As Nullable(Of Integer), tipoPersona As Nullable(Of Integer), usuFirma As String) As ObjectResult(Of Nullable(Of Integer))
+        Dim numOPParameter As ObjectParameter = If(numOP.HasValue, New ObjectParameter("NumOP", numOP), New ObjectParameter("NumOP", GetType(Integer)))
+
+        Dim tipoPersonaParameter As ObjectParameter = If(tipoPersona.HasValue, New ObjectParameter("TipoPersona", tipoPersona), New ObjectParameter("TipoPersona", GetType(Integer)))
+
+        Dim usuFirmaParameter As ObjectParameter = If(usuFirma IsNot Nothing, New ObjectParameter("UsuFirma", usuFirma), New ObjectParameter("UsuFirma", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Integer))("spU_ActualizaFirmas", numOPParameter, tipoPersonaParameter, usuFirmaParameter)
+    End Function
+
+    Public Overridable Function spS_PermisosxUSuFirma(cod_usuario As String) As ObjectResult(Of spS_PermisosxUSuFirma_Result)
+        Dim cod_usuarioParameter As ObjectParameter = If(cod_usuario IsNot Nothing, New ObjectParameter("cod_usuario", cod_usuario), New ObjectParameter("cod_usuario", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spS_PermisosxUSuFirma_Result)("spS_PermisosxUSuFirma", cod_usuarioParameter)
+    End Function
+
+    Public Overridable Function spS_UsuarioFirma(tipoUsuario As Nullable(Of Integer)) As ObjectResult(Of spS_UsuarioFirma_Result1)
         Dim tipoUsuarioParameter As ObjectParameter = If(tipoUsuario.HasValue, New ObjectParameter("TipoUsuario", tipoUsuario), New ObjectParameter("TipoUsuario", GetType(Integer)))
 
-        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spS_UsuarioFirma_Result)("spS_UsuarioFirma", tipoUsuarioParameter)
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of spS_UsuarioFirma_Result1)("spS_UsuarioFirma", tipoUsuarioParameter)
     End Function
 
 End Class

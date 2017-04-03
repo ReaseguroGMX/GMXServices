@@ -1,4 +1,4 @@
-﻿' T4 code generation is enabled for model 'C:\Users\martinem\Documents\Fuentes\GMXServices\GMXServices\GMX_DB.edmx'. 
+﻿' T4 code generation is enabled for model 'C:\Users\martinem\Documents\GMX\Fuentes\GMXServices\GMXServices\GMX_DB.edmx'. 
 ' To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 ' property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 ' is open in the designer.
