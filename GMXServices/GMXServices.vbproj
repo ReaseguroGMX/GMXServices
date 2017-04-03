@@ -196,7 +196,13 @@
     <Compile Include="spS_Aclaracion_Result.vb">
       <DependentUpon>GMX_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="spS_PermisosxUSuFirma_Result.vb">
+      <DependentUpon>GMX_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="spS_UsuarioFirma_Result.vb">
+      <DependentUpon>GMX_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spS_UsuarioFirma_Result1.vb">
       <DependentUpon>GMX_DB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -242,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

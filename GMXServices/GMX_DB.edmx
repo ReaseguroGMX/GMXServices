@@ -8,8 +8,16 @@
         <Function Name="spS_Aclaracion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_pv" Type="int" Mode="In" />
         </Function>
+        <Function Name="spS_PermisosxUSuFirma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cod_usuario" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="spS_UsuarioFirma" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TipoUsuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spU_ActualizaFirmas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumOP" Type="int" Mode="In" />
+          <Parameter Name="TipoPersona" Type="int" Mode="In" />
+          <Parameter Name="UsuFirma" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="GMXModelStoreContainer" />
       </Schema></edmx:StorageModels>
@@ -20,7 +28,15 @@
           <FunctionImport Name="spS_Aclaracion" ReturnType="Collection(GMXModel.spS_Aclaracion_Result)">
           <Parameter Name="id_pv" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spS_UsuarioFirma" ReturnType="Collection(GMXModel.spS_UsuarioFirma_Result)">
+          <FunctionImport Name="spU_ActualizaFirmas" ReturnType="Collection(Int32)">
+            <Parameter Name="NumOP" Mode="In" Type="Int32" />
+            <Parameter Name="TipoPersona" Mode="In" Type="Int32" />
+            <Parameter Name="UsuFirma" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spS_PermisosxUSuFirma" ReturnType="Collection(GMXModel.spS_PermisosxUSuFirma_Result)">
+          <Parameter Name="cod_usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spS_UsuarioFirma" ReturnType="Collection(GMXModel.spS_UsuarioFirma_Result1)">
             <Parameter Name="TipoUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -31,6 +47,18 @@
         <ComplexType Name="spS_UsuarioFirma_Result">
           <Property Type="String" Name="clave" Nullable="false" MaxLength="30" />
           <Property Type="String" Name="descripcion" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="spS_PermisosxUSuFirma_Result">
+          <Property Type="String" Name="cod_usuario" Nullable="false" MaxLength="30" />
+          <Property Type="Boolean" Name="GeneraOp_Solicitante" Nullable="true" />
+          <Property Type="Boolean" Name="Autoriza_JefeInmediato" Nullable="true" />
+          <Property Type="Boolean" Name="Autoriza_DirArea" Nullable="true" />
+          <Property Type="Boolean" Name="Autoriza_Conta" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spS_UsuarioFirma_Result1">
+          <Property Type="String" Name="clave" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="mail" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -46,11 +74,24 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spS_UsuarioFirma" FunctionName="GMXModel.Store.spS_UsuarioFirma">
+          <FunctionImportMapping FunctionImportName="spU_ActualizaFirmas" FunctionName="GMXModel.Store.spU_ActualizaFirmas" />
+          <FunctionImportMapping FunctionImportName="spS_PermisosxUSuFirma" FunctionName="GMXModel.Store.spS_PermisosxUSuFirma">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="GMXModel.spS_UsuarioFirma_Result">
+              <ComplexTypeMapping TypeName="GMXModel.spS_PermisosxUSuFirma_Result">
+                <ScalarProperty Name="cod_usuario" ColumnName="cod_usuario" />
+                <ScalarProperty Name="GeneraOp_Solicitante" ColumnName="GeneraOp_Solicitante" />
+                <ScalarProperty Name="Autoriza_JefeInmediato" ColumnName="Autoriza_JefeInmediato" />
+                <ScalarProperty Name="Autoriza_DirArea" ColumnName="Autoriza_DirArea" />
+                <ScalarProperty Name="Autoriza_Conta" ColumnName="Autoriza_Conta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spS_UsuarioFirma" FunctionName="GMXModel.Store.spS_UsuarioFirma">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="GMXModel.spS_UsuarioFirma_Result1">
                 <ScalarProperty Name="clave" ColumnName="clave" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
