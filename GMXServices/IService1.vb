@@ -22,7 +22,7 @@ Public Interface Generales
 
 #Region "Firma Electronica"
     <OperationContract()>
-    Function ActualizaFirma(NumOp As Integer, TipoPer As Integer, CodUsu As String) As Integer
+    Function ActualizaFirma(NumOp As String, TipoPer As Integer, CodUsu As String) As Integer
 
     <OperationContract()>
     Function ObtieneUsuarioFirmaE(TipoUsuario As Integer) As List(Of spS_UsuarioFirma_Result1)
