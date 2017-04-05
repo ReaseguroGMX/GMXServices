@@ -15,7 +15,7 @@
           <Parameter Name="TipoUsuario" Type="int" Mode="In" />
         </Function>
         <Function Name="spU_ActualizaFirmas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NumOP" Type="int" Mode="In" />
+          <Parameter Name="NumOPs" Type="varchar" Mode="In" />
           <Parameter Name="TipoPersona" Type="int" Mode="In" />
           <Parameter Name="UsuFirma" Type="varchar" Mode="In" />
         </Function>
@@ -28,16 +28,16 @@
           <FunctionImport Name="spS_Aclaracion" ReturnType="Collection(GMXModel.spS_Aclaracion_Result)">
           <Parameter Name="id_pv" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spU_ActualizaFirmas" ReturnType="Collection(Int32)">
-            <Parameter Name="NumOP" Mode="In" Type="Int32" />
-            <Parameter Name="TipoPersona" Mode="In" Type="Int32" />
-            <Parameter Name="UsuFirma" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="spS_PermisosxUSuFirma" ReturnType="Collection(GMXModel.spS_PermisosxUSuFirma_Result)">
           <Parameter Name="cod_usuario" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spS_UsuarioFirma" ReturnType="Collection(GMXModel.spS_UsuarioFirma_Result1)">
-            <Parameter Name="TipoUsuario" Mode="In" Type="Int32" />
+          <Parameter Name="TipoUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spU_ActualizaFirmas">
+            <Parameter Name="NumOPs" Mode="In" Type="String" />
+            <Parameter Name="TipoPersona" Mode="In" Type="Int32" />
+            <Parameter Name="UsuFirma" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spS_Aclaracion_Result">
@@ -74,7 +74,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="spU_ActualizaFirmas" FunctionName="GMXModel.Store.spU_ActualizaFirmas" />
           <FunctionImportMapping FunctionImportName="spS_PermisosxUSuFirma" FunctionName="GMXModel.Store.spS_PermisosxUSuFirma">
             <ResultMapping>
               <ComplexTypeMapping TypeName="GMXModel.spS_PermisosxUSuFirma_Result">
@@ -95,6 +94,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spU_ActualizaFirmas" FunctionName="GMXModel.Store.spU_ActualizaFirmas" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

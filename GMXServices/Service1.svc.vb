@@ -69,14 +69,14 @@ Public Class GMXServices
 #End Region
 
 #Region "Firma Electronica"
-    Public Function ActualizaFirma(NumOp As Integer, TipoPer As Integer, CodUsu As String) As Integer Implements Generales.ActualizaFirma
-        Dim Resultado As IList = Nothing
+    Public Function ActualizaFirma(NumOp As String, TipoPer As Integer, CodUsu As String) As Integer Implements Generales.ActualizaFirma
+        Dim Resultado As Integer
         Try
-            Resultado = db.spU_ActualizaFirmas(NumOp, TipoPer, CodUsu).ToList
+            Resultado = db.spU_ActualizaFirmas(NumOp, TipoPer, CodUsu)
         Catch ex As Exception
             Return Nothing
         End Try
-        Return Resultado(0)
+        Return Resultado
     End Function
 
     Public Function ObtieneUsuarioFirmaE(TipoUsuario As Integer) As List(Of spS_UsuarioFirma_Result1) Implements Generales.ObtieneUsuarioFirmaE
