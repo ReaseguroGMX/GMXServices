@@ -39,7 +39,9 @@ Public Class GMXServices
         Dim Mensaje As New MailMessage
         Try
             Mensaje.To.Add(strTo)
-            Mensaje.CC.Add(strCc)
+            If strCc <> vbNullString Then
+                Mensaje.CC.Add(strCc)
+            End If
             If strBco <> vbNullString Then
                 Mensaje.Bcc.Add(strBco)
             End If
