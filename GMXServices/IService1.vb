@@ -15,7 +15,7 @@ Public Interface Generales
 #Region "Utilidades"
 #Region "EnvioCorreos"
     <OperationContract()>
-    Function EnviaCorreo(strTo As String, strCc As String, strBody As String, strSubject As String, Optional strBco As String = vbNullString) As Boolean
+    Function EnviaCorreo(strTo As String, strBody As String, strSubject As String, Optional strCc As String = vbNullString, Optional strBco As String = vbNullString) As Boolean
 #End Region
 
 #End Region
