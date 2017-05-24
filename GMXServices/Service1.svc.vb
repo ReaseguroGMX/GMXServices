@@ -34,7 +34,7 @@ Public Class GMXServices
 
 #Region "Utilidades"
 #Region "EnvioCorreos"
-    Public Function EnviaCorreo(strTo As String, strCc As String, strBody As String, strSubject As String, Optional strBco As String = vbNullString) As Boolean Implements Generales.EnviaCorreo
+    Public Function EnviaCorreo(strTo As String, strBody As String, strSubject As String, Optional strCc As String = vbNullString, Optional strBco As String = vbNullString) As Boolean Implements Generales.EnviaCorreo
         Dim cm = ConfigurationManager.AppSettings
         Dim Mensaje As New MailMessage
         Try
